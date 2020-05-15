@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, value=None, next_node=None):
-        self.value = value
+    def __init__(self, value = None, next_node = None):
+        self.value     = value
         self.next_node = next_node
 
     def get_value(self):
@@ -38,5 +38,31 @@ class LinkedList:
 
         return False
 
-    def reverse_list(self, node, prev):
-        pass
+    def reverse_list(self, node = None, prev = None):
+        if not self.head:
+            return None
+
+        listy   = []
+
+        # Put items into a list, delete all links
+        while self.head != None:
+            try:
+                next_node = self.head.next_node.value
+            except AttributeError:
+                next_node = None
+            finally:
+                listy.append(self.head.value)
+                self.head = self.head.next_node
+        
+        for item in listy:
+            self.add_to_head(item)
+
+
+# ll = LinkedList()
+
+# ll.add_to_head(1)
+# ll.add_to_head(2)
+# ll.add_to_head(3)
+# ll.add_to_head(4)
+# ll.add_to_head(5)
+
